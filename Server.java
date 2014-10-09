@@ -15,7 +15,9 @@ public class Server
                         System.out.println("server bound");
                 }
                 catch(Exception e)
-                {}
+                {
+			System.out.println(e);
+		}
         }
 }
 

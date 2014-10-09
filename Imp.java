@@ -9,29 +9,7 @@ public class Imp extends UnicastRemoteObject implements Rint
         {
         //      throw new RemoteException();
         }
-        public void cmpr(String s1,String s2)throws RemoteException
-        {
-                int l=s1.length();
-                int l1=s2.length();
-                int c=0;
-                if(l==l1)
-                {
-                        for(int i=0;i<=l;i++)
-                        {
-                                if(s1.charAt(i)==s2.charAt(i))
-                                c++;
-                                else
-				  c=0;
-                        }
-                }
-                if(c!=0)
-                {
-                        System.out.println("Strings are equal");
-                }
-                else
-                        System.out.println("strings are not equal");
-        }
-        public void rev(String s1)throws RemoteException
+	  public String rev(String s1)throws RemoteException
         {
                 String r="";
                 int l=s1.length();
@@ -39,25 +17,72 @@ public class Imp extends UnicastRemoteObject implements Rint
                 {
                         r=r+s1.charAt(i);
                 }
-                System.out.println("Reverse:"+r);
+                return(r);
+               // System.out.println("Reverse:"+r);
         }
-        public void concat(String s1,String s2)throws RemoteException
+
+        public int cmpr(String s1,String s2)throws RemoteException
+        {
+               int c;
+      if(s1.compareTo(s2)>0)
+      {
+	c=1;
+       
+      }
+      else if(s1.compareTo(s2)<0)
+      {
+c=2;
+         
+      }
+      else
+      { 
+c=0;
+       
+      }
+return(c);
+   }
+	
+                /*if(c!=0)
+                {
+                        System.out.println("Strings are equal");
+                }
+                else
+                        System.out.println("strings are not equal");
+        }*/
+        
+        public String concat(String s1,String s2)throws RemoteException
         {
                 s1=s1+s2;
-		  System.out.println("Concatenation:"+s1);
+		return(s1);
+		 // System.out.println("Concatenation:"+s1);
         }
-        public void cse(String s1,String s2)throws RemoteException
+    /*    public void cse(String s1,String s2)throws RemoteException
         {
 		
                 s1=s1.toLowerCase();
-		s1=s1.toUpperCase();
                 System.out.println("lower:"+s1);
-		System.out.println("upper:"+s1);
-		s2=s2.toLowerCase();
                 s2=s2.toUpperCase();
-		System.out.println("lower:"+s2);
                 System.out.println("upper:"+s2);
         }
 
-}
+}*/
+ public String ucse(String s1)throws RemoteException
+   
+   {
+     String lstr;
+     lstr=s1.toLowerCase();
+	return(lstr);
+   }
 
+  public String lcse(String s2)throws RemoteException
+   
+   {
+     String ustr;
+     ustr=s2.toUpperCase();
+	return(ustr);
+   }
+  public void close()throws RemoteException
+	{
+		System.exit(0);
+	}
+}
